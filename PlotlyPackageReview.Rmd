@@ -1,6 +1,6 @@
 ---
 title: "Plotly Package Review"
-Authors: Jonathan Yu, Jaden Stanford, Joseph Keogh
+author: Jonathan Yu, Jaden Stanford, Joseph Keogh
 output:
    prettydoc::html_pretty:
     theme: hpstr
@@ -11,6 +11,9 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 install.packages("prettydoc")
 ```
+
+![](/cloud/project/plotlylogo.png)
+
 
 # Package Overview
 
@@ -26,17 +29,24 @@ To answer these questions they decided to create a tool to make scientific and d
 ## Usage of Plotly 
 Plotly is a graphing library that makes interactive, publication-quality graphs. Oftentimes with data visualization, people run into issues with making graphs both interesting and informative. However, with plotly this can be done easily as plotly allows for the creation of a wide variety of visualizations ranging from basic bar-graphs to maps, 3d charts, and animated charts. In addition to being easy to use, plotly is also an open-source package that can be found on numerous platforms including R, Python, .NET, JS, and Julia.
 
+
 ##Version History
+
 
 ##Dependencies
 
+
 ##Usage
+
 
 ##Examples of Usage
 
+
 ##Similar Packages
 
+
 ##Reflection
+
 
 ```{r}
 
