@@ -7,22 +7,17 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+# Package Overview
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+## History of Plotly 
+Plotly was founded by Alex Johnson, Jack Parmer, Chris Parmer, and Matthew Sundquist.  Their background lies in energy and data analysis.  While working for the data science program of a California-based cleantech company, Alex, Jack, Chris, and Matthew found themselves facing the seemingly simple problem of finding a way to meaningfully and easily share the data they've gathered. Even after collecting, analyzing, and sorting the data, they felt that there were still important questions that had to be answered: 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+How do we share what we've learned with others in a meaningful way? 
+## Usage of Plotly 
+Plotly is a graphing library that makes interactive, publication-quality graphs. It is an open-source package that can be found on numerous platforms including R, Python, .NET, JS, and Julia.  It can make visualizations ranging from basic bar-graphs to maps, 3d charts, and animated charts.  
 
-```{r cars}
-summary(cars)
+
+```{r}
+
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
