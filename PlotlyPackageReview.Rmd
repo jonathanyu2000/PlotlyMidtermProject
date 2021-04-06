@@ -159,7 +159,7 @@ salary_pre_processing <- function(salary){
 }
 
 #calling salary function
-salary_stats <- salary_pre_processing(salary)
+salary_stats <- salary_pre_processing(salary) #processing salary data
 view(salary_stats)
 
 ```
@@ -176,14 +176,15 @@ colnames(nba_combined) <- c("Player", "Tm","Pos", "FG", "FT","PTS", "MP", "Salar
 ```{r,warning = FALSE, message = FALSE}
 #Creating a 3D graph
 
-
+#creating 3D scatterplot using plotly
 fig <- plot_ly(nba_combined,type = "scatter3d",mode = "markers", x = ~MP, y = ~FG, z = ~PTS, 
-                text = ~paste('Player:', Player,'Salary:', Salary))
- fig <- fig %>% layout(title = 'NBA Player Rankings Based on Minutes Played, Field Goals, and Points')
+                text = ~paste('Player:', Player,'Salary:', Salary)) #to show player name and salary when hovering over points
+ fig <- fig %>% layout(title = 'NBA Player Rankings Based on Minutes Played, Field Goals, and Points') #adding title
  fig <- fig %>% layout(scene = list(xaxis = list(title = 'Minutes Played'),
                                     yaxis = list(title = 'Field Goals'),
                                     zaxis = list(title = 'Points')))
-
+#formatting axes
+ 
 fig
 
 ```
