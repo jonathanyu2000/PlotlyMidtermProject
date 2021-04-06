@@ -86,6 +86,7 @@ visual formats supported by plotly include:
 ## Bubble Chart
 One of the most basic charts that you are able to create in plotly is the bubble chart.  A bubble chart is a scatter plot whose markers have variable color and size.  In this example we will be making a bubble plot from scratch using plotly and the built in mtcars dataset in R.
 ```{r}
+#plot_ly function allows for creation of any plotly graph
 figure <- plot_ly(
   data = mtcars, #specified dataset, in this case we are using mtcars
   x = ~mpg, #variable that corresponds with x-axis 
@@ -95,12 +96,45 @@ figure <- plot_ly(
   mode = 'markers', 
   marker = list(size = ~cyl, opacity = 0.5, color = 'green')) #marker parameter specifies the size, opacity, and color of each of our bubbles.  
 
-figure <- figure %>%
-  layout(title = 'Gas Efficiency and Speed of Cars in mtcars dataset')
+
+figure <- figure %>% #plotly uses the pipe function from dplyr for formatting the layout of the graph (x-axis, y-axis, and title)
+  layout(title = 'Gas Efficiency and Speed of Cars in mtcars dataset', 
+         xaxis = list(title = 'Miles Per Gallon'),
+         yaxis = list(title = 'Horsepower'))
 figure
   
 ```
+You can also add more to what can be shown in a plotly graph by adding the 'text' parameter 'hoverinfo'. 
 
+```{r}
+figure <- plot_ly(
+  data = mtcars,
+  x = ~mpg,
+  y = ~hp,
+  hoverinfo = 'text', #hoverinfo parameter added
+  text = ~paste('Car Model:', rownames(mtcars), '<br>Displacement:', disp), #text parameter changed
+  type = 'scatter', 
+  mode = 'markers', 
+  marker = list(size = ~cyl, opacity = 0.5, color = 'green')) 
+
+
+figure <- figure %>%
+  layout(title = 'Gas Efficiency and Speed of Cars in mtcars dataset', 
+         xaxis = list(title = 'Miles Per Gallon'),
+         yaxis = list(title = 'Horsepower'))
+figure
+
+```
+
+## Heatmaps
+Heatmaps are graphs that use a color scale to illustrate relationships between variables.  In order to create a heatmap in plotly, you have to first convert your dataset into a matrix.  This can be done with the as.matrix function in R. In this example, we will be using the Iris dataset to create a plotly heatmap from scratch. 
+```{r}
+iris_matrix <- as.matrix(iris)
+iris
+plot <- plot_ly (x = iris$Species, y = colnames(iris_matrix), z = iris_matrix, type = "heatmap") %>%
+  layout(margin = list(l=120))
+plot
+```
 
 # Reflection
 
