@@ -37,7 +37,7 @@ Current Version: 4.9.3 (last updated 1/10/2021)
 ## Dependencies
 R (≥ 3.2.0), ggplot2 (≥ 3.0.0)
 
-## Usage
+# Usage
 plotly offers a wide variety of interactive options allowed on a web-based application which include: 
 
 
@@ -62,19 +62,19 @@ visual formats supported by plotly include:
   - subplots (multiple axes, map subplots and small multiples, inset plots, subplots, 3d subplots, and more)
   - animated plots
 
-<<<<<<< HEAD
-### Similar Packages{.tabset} 
+
+# Similar Packages{.tabset} 
 
 
-#### leaflet 
+### leaflet 
 ![](/cloud/project/leafletgraph.png)
 
 
-#### ggplot2
+### ggplot2
 ![](/cloud/project/ggplot2.png)
 
 
-#### dygraphs
+### dygraphs
 ![](/cloud/project/dygraphsimage.png)
 
 
@@ -82,10 +82,8 @@ visual formats supported by plotly include:
 
 
 
-##Reflection
+# Reflection
 
 
-```{r}
 
-```
 
