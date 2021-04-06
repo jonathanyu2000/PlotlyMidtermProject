@@ -65,7 +65,22 @@ visual formats supported by plotly include:
   - subplots (multiple axes, map subplots and small multiples, inset plots, subplots, 3d subplots, and more)
   - animated plots
 
+## ggplot to plotly
+One of the neat things about the plotly package is that it can convert a ggplot2 graph into a plotly graph.  Here we have a basic graph made from ggplot2:
+```{r, echo = FALSE}
 
+ggplot1 <- ggplot(mtcars, aes(x = mpg, y = hp)) + geom_point() + labs(x = "Miles Per Gallon", y = "Horsepower", title = "Gas Efficiency and Horsepower of Cars in mtcars dataset")
+ggplot1
+```
+
+To turn this graph into a plotly graph we can use the function 'ggplotly'.
+
+```{r}
+plotlyggplot <- ggplotly(ggplot1)
+plotlyggplot
+```
+
+With the ggplot2 graph converted into a plotly graph, it is now possible to enjoy all of the features that plotly has with a graph made from ggplot2.
 
 ## Bubble Chart
 One of the most basic charts that you are able to create in plotly is the bubble chart.  A bubble chart is a scatter plot whose markers have variable color and size.  In this example we will be making a bubble plot from scratch using plotly and the built in mtcars dataset in R.
@@ -82,6 +97,7 @@ figure <- plot_ly(
 
 
 figure <- figure %>% #plotly uses the pipe function from dplyr for formatting the layout of the graph (x-axis, y-axis, and title)
+  #the layout function is used to specify the text and formatting of the title, x-axis, and y-axis
   layout(title = 'Gas Efficiency and Speed of Cars in mtcars dataset', 
          xaxis = list(title = 'Miles Per Gallon'),
          yaxis = list(title = 'Horsepower'))
@@ -110,7 +126,7 @@ figure
 ```
 
 ## Heatmaps
-Heatmaps are graphs that use a color scale to illustrate relationships between variables.  In order to easily create a heatmap in plotly, you have to first convert your dataset into a matrix.  This can be done with the as.matrix function in R. After that, it is important to normalize the different variables since the heatmap uses the same color scale for all variables so some variables with lower/higher numbers will not show up on the color scale. In this example, we will be using the USArrests dataset built into R.  
+Heatmaps are graphs that use a color scale to illustrate relationships between variables.  In order to easily create a heatmap in plotly, you have to first convert your dataset into a matrix.  This can be done with the as.matrix function in R. After that, it is important to normalize the different variables since the heatmap uses the same color scale for all variables so some variables with lower/higher numbers will not illustrate the differences between variables clearly on the color scale. In this example, we will be using the USArrests dataset built into R.  
 ```{r}
 USArrests <- USArrests[,-c(4)]
 usarrests_matrix <- as.matrix(USArrests) #turning mtcars dataset into a matrix
@@ -204,8 +220,6 @@ plot <- plot %>% layout(
 )
 plot
 ```
-
-
 
 # Similar Packages
 
