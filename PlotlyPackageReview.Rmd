@@ -277,11 +277,22 @@ Plotly seems to be a comprehensive package for graphic data visualization. Graph
 
 #### Pros
 
+- graphs are interactive
+- graphs are aesthetically pleasing
+- can be used in conjunction to ggplot
+- relatively simple to use for simple graphs 
+- many options for visualizations (graphs, maps, animations, subplots, 3D charts, financial charts, statistical charts )
+- graphs are highly customizable 
+- plotly is available in other programs
 
 #### Cons
 
+- for use in R, need to make sure that if you are looking for information online it is specific to R and not another program that uses plotly (like Python)
 
 #### Suggestions
+
+- more documentation for some of the specific and more complex graph types (like choropleths, 3D charts)
+
 
 
 
