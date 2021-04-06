@@ -84,17 +84,23 @@ visual formats supported by plotly include:
 # Examples of Usage 
 
 ## Bubble Chart
-One of the most basic charts that you are able to create in plotly is the bubble chart.  In this example we will be making a bubble plot from scratch using plotly and the built in mtcars dataset in R.
+One of the most basic charts that you are able to create in plotly is the bubble chart.  A bubble chart is a scatter plot whose markers have variable color and size.  In this example we will be making a bubble plot from scratch using plotly and the built in mtcars dataset in R.
 ```{r}
-View(mtcars)
-mtcars
-figure <- plot_ly(mtcars, x = ~mpg, y = ~hp, text = ~mtcars[,0], type = 'scatter', mode = 'markers', marker = list(size = ~cyl, opacity = 0.5))
+figure <- plot_ly(
+  data = mtcars, #specified dataset, in this case we are using mtcars
+  x = ~mpg, #variable that corresponds with x-axis 
+  y = ~hp, #variable that corresponds with y-axis
+  text = rownames(mtcars), #specifies text that shows up when you hover over a data point
+  type = 'scatter', #specified graph type, in this case we are using the scatter plot
+  mode = 'markers', 
+  marker = list(size = ~cyl, opacity = 0.5, color = 'green')) #marker parameter specifies the size, opacity, and color of each of our bubbles.  
+
 figure <- figure %>%
-  layout(title = 'Miles Per Gallon vs. Horsepower in mtcars',
-         xaxis = list(showgrid = FALSE),
-         yaxis = list(showgrid = FALSE))
+  layout(title = 'Gas Efficiency and Speed of Cars in mtcars dataset')
+figure
   
 ```
+
 
 # Reflection
 
