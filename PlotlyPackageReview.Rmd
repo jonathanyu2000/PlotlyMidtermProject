@@ -10,9 +10,10 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library("prettydoc")
-library("plotly")
+library(e1071)
+library(tidyverse)
+library(plotly)
 install.packages("tidyverse")
-library("tidyverse")
 ```
 
 ![](/cloud/project/plotlylogo.png)
@@ -65,55 +66,6 @@ visual formats supported by plotly include:
   - subplots (multiple axes, map subplots and small multiples, inset plots, subplots, 3d subplots, and more)
   - animated plots
 
-
-# Similar Packages
-
-
-## ggplot2
-
-ggplot2 is probably the most similar package to leaflet. You can even convert from ggplot2 to plotly, and they share a lot of the same capabilities as far as creating graphics for data visualization. However, plotly has slightly more capabilaties as far as creating fully interactive graphs. Plotly is also available for Python, MATLAB, and React, whereas ggplot2 is made for R.
-
-The ggplot2 graph below shows a simple graph created in ggplot2 that graphs GDP per capita vs. Life Expectancy.
-
-![](/cloud/project/ggplot2.png)
-
-
-## leaflet 
-
-Leaflet is a very popular R package used to make interactive maps. It expands greatly on the map visualization tools in plotly.
-
-#### Some features include:
-
-- interactive panning and zooming
-- creating maps using combinations of map tiles, map markers, polygons, lines, popups, and more
-- create maps directly in RStudio
-- embed maps into RMarkdown documents and Shiny apps
-- display maps in non spherical mercator projections
-- easy rendering of spatial objects from the sp or sf packages, or data frames with latitude/longitude columns
-- can change features in maps using plugins from the leaflet plugins repository
-
-The leaflet graph below shows an interactive graph of U.S population density.
-
-![](/cloud/project/leafletgraph.png)
-
-
-## dygraphs
-
-dygraphs is an R package thats focuses on interactive time series visualization.
-
-#### Some features include:
-
-- automatic plotting of xts time-series objects or other time series objects that are convertible to xts (eXtensible Time Series)
-- range selector interface for interactive interactive panning and zooming,
-- interactive series/point highlighting with different visual options,
-- highly configurable axis and series display 
-- graph overlays including shaded regions, event lines, and annotations
-- make graphs in the R console
-- embed graphs into RMarkdown documents and R Shiny apps
-
-The dygraph below shows an interactive time-series graph showing the Discharge of River Danube.
-
-![](/cloud/project/dygraphsimage.png)
 
 
 ## Bubble Chart
@@ -171,6 +123,121 @@ plot <- plot_ly (x = colnames(mtcars_matrix), #specifies variables on x-axis
                  
 plot
 ```
+
+## 3D Graphs 
+Plotly can also be used to create 3D versions of graphs, such as 3D scatterplots. In the following example from the Clustering Lab, a 3D plotly scatterplot is shown that graphs NBA players based on minutes played, field goals, and points. Hover over each point to see the player name and their salary.
+
+```{r, results=FALSE, warning = FALSE, message = FALSE}
+#importing dataset and viewing data
+nba = read_csv("/cloud/project/nba2020-21.csv")
+
+#a function for pre-processing of the nba data
+nba_pre_processing <- function(nba){
+  stats <- nba[, c("Player","Tm", "Pos", "FG", "FT", "PTS", "MP")] %>%
+mutate(Player = as.factor(Player)) %>%
+  mutate(Pos=as.factor(Pos)) %>%
+  mutate(Tm=as.factor(Tm)) %>%
+  distinct(Player, .keep_all = TRUE)    #getting rid of duplicate names
+  x <- gsub("[^[:alnum:]]", " ", stats$Player)  #getting rid of special chars
+  mutate(stats, Player = x)
+}
+
+#calling the function
+nba_stats <- nba_pre_processing(nba)
+view(nba_stats)
+
+#pre-processing for salary data
+salary = read_csv("/cloud/project/nba_salaries_21.csv") 
+
+#function for pre-processing salary data
+salary_pre_processing <- function(salary){
+  salary %>%
+  mutate(Player = as.factor(Player)) %>%
+  distinct(Player, .keep_all = TRUE)    #getting rid of duplicate names
+  x <- gsub("[^[:alnum:]]", " ", salary$Player)  #getting rid of special chars
+  mutate(salary, Player = x)
+}
+
+#calling salary function
+salary_stats <- salary_pre_processing(salary)
+view(salary_stats)
+
+```
+
+```{r, results=FALSE}
+#combining nba data with salary data into one chart
+nba_combined <- merge(nba_stats, salary_stats, by="Player", all=TRUE)  
+
+#fixing column names 
+colnames(nba_combined) <- c("Player", "Tm","Pos", "FG", "FT","PTS", "MP", "Salary")
+
+```
+
+```{r,warning = FALSE, message = FALSE}
+#Creating a 3D graph
+
+
+fig <- plot_ly(nba_combined,type = "scatter3d",mode = "markers", x = ~MP, y = ~FG, z = ~PTS, 
+                text = ~paste('Player:', Player,'Salary:', Salary))
+ fig <- fig %>% layout(title = 'NBA Player Rankings Based on Minutes Played, Field Goals, and Points')
+ fig <- fig %>% layout(scene = list(xaxis = list(title = 'Minutes Played'),
+                                    yaxis = list(title = 'Field Goals'),
+                                    zaxis = list(title = 'Points')))
+
+fig
+
+```
+
+
+# Similar Packages
+
+
+## ggplot2
+
+ggplot2 is probably the most similar package to leaflet. You can even convert from ggplot2 to plotly, and they share a lot of the same capabilities as far as creating graphics for data visualization. However, plotly has slightly more capabilaties as far as creating fully interactive graphs. Plotly is also available for Python, MATLAB, and React, whereas ggplot2 is made for R.
+
+The ggplot2 graph below shows a simple graph created in ggplot2 that graphs GDP per capita vs. Life Expectancy.
+
+![](/cloud/project/ggplot2.png)
+
+
+## leaflet 
+
+Leaflet is a very popular R package used to make interactive maps. It expands greatly on the map visualization tools in plotly.
+
+#### Some features include:
+
+- interactive panning and zooming
+- creating maps using combinations of map tiles, map markers, polygons, lines, popups, and more
+- create maps directly in RStudio
+- embed maps into RMarkdown documents and Shiny apps
+- display maps in non spherical mercator projections
+- easy rendering of spatial objects from the sp or sf packages, or data frames with latitude/longitude columns
+- can change features in maps using plugins from the leaflet plugins repository
+
+The leaflet graph below shows an interactive graph of U.S population density.
+
+![](/cloud/project/leafletgraph.png)
+
+
+## dygraphs
+
+dygraphs is an R package thats focuses on interactive time series visualization.
+
+#### Some features include:
+
+- automatic plotting of xts time-series objects or other time series objects that are convertible to xts (eXtensible Time Series)
+- range selector interface for interactive interactive panning and zooming,
+- interactive series/point highlighting with different visual options,
+- highly configurable axis and series display 
+- graph overlays including shaded regions, event lines, and annotations
+- make graphs in the R console
+- embed graphs into RMarkdown documents and R Shiny apps
+
+The dygraph below shows an interactive time-series graph showing the Discharge of River Danube.
+
+![](/cloud/project/dygraphsimage.png)
+
 
 # Reflection
 
