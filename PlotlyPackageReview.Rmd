@@ -24,6 +24,10 @@ Plotly is a graphing library that makes interactive, publication-quality graphs.
 
 ##Examples of Usage
 
+##Similar Packages
+
+##Reflection
+
 ```{r}
 
 ```
