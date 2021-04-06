@@ -188,7 +188,7 @@ fig
 
 ```
 
-## Map
+## Maps
 Plotly has some features that allow for the creation of maps. There are different types of maps in plotly, like bubble maps, scatter plot maps, choropleth maps, line maps, and layered maps. The map below is an example of a plotly choropleth map. A choropleth map shades geographic regions by value. It shows the states ranked based on mental health and access. Hovering over the states shows the state postal code and and ranking.
 ```{r,warning = FALSE, message = FALSE}
 data<- read.csv("/cloud/project/health.csv", header = TRUE, sep = ",") #reading in data from the csv
@@ -259,6 +259,6 @@ The dygraph below shows an interactive time-series graph showing the Discharge o
 
 # Reflection
 
-
+Plotly seems to be a comprehensive package for graphic data visualization. Graphics created with plotly are interactive and aesthetically pleasing, and there are many different options for types of graphics (plots, maps, graphs, etc.) It is also useful that plotly can be used with ggplot2, another great package in r for data visualization. Although the two packages are similar, plotly is more widely applicable and allows for higher levels of interaction. Additionally, plotly is available in Python, MATLAB, and Reach.
 
 
