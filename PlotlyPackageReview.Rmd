@@ -9,7 +9,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-install.packages("prettydoc")
+library("prettydoc")
 ```
 
 # Package Overview
@@ -27,13 +27,14 @@ To answer these questions they decided to create a tool to make scientific and d
 Plotly is a graphing library that makes interactive, publication-quality graphs. Oftentimes with data visualization, people run into issues with making graphs both interesting and informative. However, with plotly this can be done easily as plotly allows for the creation of a wide variety of visualizations ranging from basic bar-graphs to maps, 3d charts, and animated charts with a few lines of code. In addition to being easy to use, plotly is also an open-source package that can be found on numerous platforms including R, Python, .NET, JS, and Julia.
 
 ## Version History
-Current Version: 4.9.3
+Current Version: 4.9.3 (last updated 1/10/2021)
 
 ## Dependencies
 R (≥ 3.2.0), ggplot2 (≥ 3.0.0)
 
 ##Examples of Usage
-plotly can be used to zoom in or out on the grap
+plotly converts plots to an interactive, web-based version.  It allows for zooming in or out of a graph, selection of data points 
+
 ##Similar Packages
 
 ##Reflection
