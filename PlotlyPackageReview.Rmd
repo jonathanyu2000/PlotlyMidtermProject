@@ -1,6 +1,6 @@
 ---
 title: "Plotly Package Review"
-Authors: Jonathan Yu, Jaden Stanford, Joseph Keogh
+author: Jonathan Yu, Jaden Stanford, Joseph Keogh
 output:
    prettydoc::html_pretty:
     theme: hpstr
@@ -11,6 +11,9 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 library("prettydoc")
 ```
+
+![](/cloud/project/plotlylogo.png)
+
 
 # Package Overview
 
@@ -58,6 +61,7 @@ visual formats supported by plotly include:
 ##Similar Packages
 
 ##Reflection
+
 
 ```{r}
 
