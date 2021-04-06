@@ -9,7 +9,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-install.packages("prettydoc")
+library("prettydoc")
 ```
 
 ![](/cloud/project/plotlylogo.png)
@@ -18,16 +18,17 @@ install.packages("prettydoc")
 # Package Overview
 
 ## History of Plotly 
-Plotly was founded by Alex Johnson, Jack Parmer, Chris Parmer, and Matthew Sundquistin 2013.  While working for the data science program of a California-based cleantech company, Alex, Jack, Chris, and Matthew found themselves facing the seemingly simple problem of having to find a way to meaningfully and easily share the data they've gathered. Even after collecting, analyzing, and sorting data, they felt that there were still important questions that had to be answered.  These questions included: 
+Plotly is a company founded by Alex Johnson, Jack Parmer, Chris Parmer, and Matthew Sundquistin 2013.  While working for the data science program of a California-based cleantech company, Alex, Jack, Chris, and Matthew found themselves facing the seemingly simple problem of having to find a way to meaningfully and easily share the data they've gathered. Even after collecting, analyzing, and sorting data, they felt that there were still important questions that had to be answered.  These questions included: 
 
   - How do we share what we've learned with others in a meaningful way? 
   - How do we enable others to explore our data?
   - Can we give others access to the models to explore on their own? 
 
-To answer these questions they decided to create a tool to make scientific and data analysis simple.  Plotly was actually originally a JavaScript graphing library which was eventually created as an R package which allows the creation of graphs using R data and syntax. Their focuses with plotly were to use the web as a data science platform, power discovery with open source, provide unlimited flexibility, remove language as a barrier, and enable shared goals across the organization. In 2013 and 2014, Jack, Chris, Matthew, and Alex officially founded "Plotly" and opened their Montreal headquarters. 
+To answer these questions they decided to create a tool to make scientific and data analysis simple.  Plotly was actually originally a JavaScript graphing library which was eventually converted into an R package which allowed the creation of graphs using R data and syntax from ggplot2. Their focuses with plotly were to use the web as a data science platform, power discovery with open source, provide unlimited flexibility, remove language as a barrier, and enable shared goals across the organization. In 2013 and 2014, Jack, Chris, Matthew, and Alex officially founded "plotly" and opened their Montreal headquarters. 
   
-## Usage of Plotly 
-Plotly is a graphing library that makes interactive, publication-quality graphs. Oftentimes with data visualization, people run into issues with making graphs both interesting and informative. However, with plotly this can be done easily as plotly allows for the creation of a wide variety of visualizations ranging from basic bar-graphs to maps, 3d charts, and animated charts. In addition to being easy to use, plotly is also an open-source package that can be found on numerous platforms including R, Python, .NET, JS, and Julia.
+## Background of Plotly 
+Plotly is a graphing library that makes interactive, publication-quality graphs. Oftentimes with data visualization, people run into issues with making graphs both interesting and informative. However, with plotly this can be done easily as plotly allows for the creation of a wide variety of visualizations ranging from basic bar-graphs to maps, 3d charts, and animated charts with a few lines of code. In addition to being easy to use, plotly is also an open-source package that can be found on numerous platforms including R, Python, .NET, JS, and Julia.
+
 
 
 ##Version History
@@ -39,7 +40,16 @@ Plotly is a graphing library that makes interactive, publication-quality graphs.
 ##Usage
 
 
+## Version History
+Current Version: 4.9.3 (last updated 1/10/2021)
+
+## Dependencies
+R (≥ 3.2.0), ggplot2 (≥ 3.0.0)
+
+
+
 ##Examples of Usage
+plotly converts plots to an interactive, web-based version.  It allows for zooming in or out of a graph, selection of data points 
 
 
 ##Similar Packages
