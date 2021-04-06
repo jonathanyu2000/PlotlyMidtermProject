@@ -72,11 +72,14 @@ One of the neat things about the plotly package is that it can convert a ggplot2
 ggplot1 <- ggplot(mtcars, aes(x = mpg, y = hp)) + geom_point() + labs(x = "Miles Per Gallon", y = "Horsepower", title = "Gas Efficiency and Horsepower of Cars in mtcars dataset")
 ggplot1
 ```
-To turn this graph into a plotly graph we can use the function 'ggplotly'. 
+
+To turn this graph into a plotly graph we can use the function 'ggplotly'.
+
 ```{r}
 plotlyggplot <- ggplotly(ggplot1)
 plotlyggplot
 ```
+
 With the ggplot2 graph converted into a plotly graph, it is now possible to enjoy all of the features that plotly has with a graph made from ggplot2.
 
 ## Bubble Chart
