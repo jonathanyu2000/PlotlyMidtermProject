@@ -288,6 +288,7 @@ Plotly seems to be a comprehensive package for graphic data visualization. Graph
 - plotly is available in other programs
 
 #### Cons
+
   - Documentation is limited on the specific parameters within plot_ly.  While the package documentation is helpful in outlining each function within plot_ly it does a fairly poor job of providing examples of what each parameter does within the plot_ly function. I think having extensive documentation on each parameter accompanied by a picture example of what it does would be tremendously helpful for people to get a better understanding of the plotly package. 
   - for use in R, need to make sure that if you are looking for information online it is specific to R and not another program that uses plotly (like Python)
 
