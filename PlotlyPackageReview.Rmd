@@ -10,6 +10,9 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library("prettydoc")
+library("plotly")
+install.packages("tidyverse")
+library("tidyverse")
 ```
 
 ![](/cloud/project/plotlylogo.png)
@@ -57,6 +60,19 @@ visual formats supported by plotly include:
   - animated plots
 
 # Examples of Usage 
+
+## Bubble Chart
+One of the most basic charts that you are able to create in plotly is the bubble chart.  In this example we will be making a bubble plot from scratch using plotly and the built in mtcars dataset in R.
+```{r}
+View(mtcars)
+mtcars
+figure <- plot_ly(mtcars, x = ~mpg, y = ~hp, text = ~mtcars[,0], type = 'scatter', mode = 'markers', marker = list(size = ~cyl, opacity = 0.5))
+figure <- figure %>%
+  layout(title = 'Miles Per Gallon vs. Horsepower in mtcars',
+         xaxis = list(showgrid = FALSE),
+         yaxis = list(showgrid = FALSE))
+  
+```
 
 ##Similar Packages
 
