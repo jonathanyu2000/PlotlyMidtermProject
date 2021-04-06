@@ -16,6 +16,13 @@ How do we share what we've learned with others in a meaningful way?
 ## Usage of Plotly 
 Plotly is a graphing library that makes interactive, publication-quality graphs. It is an open-source package that can be found on numerous platforms including R, Python, .NET, JS, and Julia.  It can make visualizations ranging from basic bar-graphs to maps, 3d charts, and animated charts.  
 
+##Version History
+
+##Dependencies
+
+##Usage
+
+##Examples of Usage
 
 ```{r}
 
