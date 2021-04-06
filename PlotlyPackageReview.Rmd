@@ -201,6 +201,22 @@ fig
 
 ```
 
+## Map
+Plotly has some features that allow for the creation of maps. There are different types of maps in plotly, like bubble maps, scatter plot maps, choropleth maps, line maps, and layered maps. The map below is an example of a plotly choropleth map. A choropleth map shades geographic regions by value. It shows the states ranked based on mental health and access. Hovering over the states shows the state postal code and and ranking.
+```{r,warning = FALSE, message = FALSE}
+data<- read.csv("/cloud/project/health.csv", header = TRUE, sep = ",") #reading in data from the csv
+
+plot <- plot_ly(data, type="choropleth", locations=data$State, z=data$Rank, locationmode="USA-states")
+#limiting map to USA and not global
+g <- list(
+  scope = 'usa'
+)
+#showing plot
+plot <- plot %>% layout(
+  geo = g
+)
+plot
+```
 
 # Similar Packages
 
