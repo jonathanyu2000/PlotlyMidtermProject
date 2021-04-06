@@ -10,10 +10,9 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library("prettydoc")
-library(e1071)
-library(tidyverse)
-library(plotly)
-install.packages("tidyverse")
+library("e1071")
+library("tidyverse")
+library("plotly")
 ```
 
 ![](/cloud/project/plotlylogo.png)
@@ -111,15 +110,16 @@ figure
 ```
 
 ## Heatmaps
-Heatmaps are graphs that use a color scale to illustrate relationships between variables.  In order to easily create a heatmap in plotly, you have to first convert your dataset into a matrix.  This can be done with the as.matrix function in R. After that, it is important to normalize the different variables since the heatmap uses the same color scale for all variables so some variables with lower/higher numbers will not show up on the color scale. In this example, we will be using the mtcars dataset again.  
+Heatmaps are graphs that use a color scale to illustrate relationships between variables.  In order to easily create a heatmap in plotly, you have to first convert your dataset into a matrix.  This can be done with the as.matrix function in R. After that, it is important to normalize the different variables since the heatmap uses the same color scale for all variables so some variables with lower/higher numbers will not show up on the color scale. In this example, we will be using the USArrests dataset built into R.  
 ```{r}
-mtcars_matrix <- as.matrix(mtcars) #turning mtcars dataset into a matrix
-mtcars_matrix <- apply(mtcars_matrix, 2, function(x) {x/mean(x)}) #normalizing the variables within mtcars_matrix
-plot <- plot_ly (x = colnames(mtcars_matrix), #specifies variables on x-axis
-                 y = rownames(mtcars_matrix), #specifies variables on y-axis
-                 z = mtcars_matrix, #specifies data being used
+USArrests <- USArrests[,-c(4)]
+usarrests_matrix <- as.matrix(USArrests) #turning mtcars dataset into a matrix
+usarrests_matrix <- apply(USArrests, 2, function(x) {x/mean(x)}) #normalizing the variables within mtcars_matrix
+plot <- plot_ly (x = colnames(usarrests_matrix), #specifies variables on x-axis
+                 y = rownames(usarrests_matrix), #specifies variables on y-axis
+                 z = usarrests_matrix, #specifies data being used
                  type = "heatmap") %>% #specifies type of graph 
-  layout(margin = list(l = 120)) #specifies margins of the graph
+  layout(margin = list(l = 10)) #specifies margins of the graph
                  
 plot
 ```
