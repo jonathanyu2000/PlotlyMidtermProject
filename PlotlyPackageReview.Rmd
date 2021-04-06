@@ -31,28 +31,34 @@ Plotly is a graphing library that makes interactive, publication-quality graphs.
 
 
 
-##Version History
-
-
-##Dependencies
-
-
 ##Usage
 
 
 ## Version History
 Current Version: 4.9.3 (last updated 1/10/2021)
 
+
 ## Dependencies
 R (≥ 3.2.0), ggplot2 (≥ 3.0.0)
-
 
 
 ##Examples of Usage
 plotly converts plots to an interactive, web-based version.  It allows for zooming in or out of a graph, selection of data points 
 
 
-##Similar Packages
+### Similar Packages{.tabset} 
+
+
+#### leaflet 
+![](/cloud/project/leafletgraph.png)
+
+
+#### ggplot2
+![](/cloud/project/ggplot2.png)
+
+
+#### dygraphs
+![](/cloud/project/dygraphsimage.png)
 
 
 ##Reflection
