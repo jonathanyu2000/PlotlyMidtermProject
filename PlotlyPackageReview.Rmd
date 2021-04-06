@@ -41,7 +41,7 @@ R (≥ 3.2.0), ggplot2 (≥ 3.0.0)
 plotly offers a wide variety of interactive options allowed on a web-based application which include: 
 
 
-##Examples of Usage
+## Examples of Usage
 plotly converts plots to an interactive, web-based version.  It allows for zooming in or out of a graph, selection of data points 
 
   - zooming in or out of a graph
@@ -63,22 +63,55 @@ visual formats supported by plotly include:
   - animated plots
 
 
-# Similar Packages{.tabset} 
+# Similar Packages
 
 
-### leaflet 
-![](/cloud/project/leafletgraph.png)
+## ggplot2
 
+ggplot2 is probably the most similar package to leaflet. You can even convert from ggplot2 to plotly, and they share a lot of the same capabilities as far as creating graphics for data visualization. However, plotly has slightly more capabilaties as far as creating fully interactive graphs. Plotly is also available for Python, MATLAB, and React, whereas ggplot2 is made for R.
 
-### ggplot2
+The ggplot2 graph below shows a simple graph created in ggplot2 that graphs GDP per capita vs. Life Expectancy.
+
 ![](/cloud/project/ggplot2.png)
 
 
-### dygraphs
+## leaflet 
+
+Leaflet is a very popular R package used to make interactive maps. It expands greatly on the map visualization tools in plotly.
+
+#### Some features include:
+
+- interactive panning and zooming
+- creating maps using combinations of map tiles, map markers, polygons, lines, popups, and more
+- create maps directly in RStudio
+- embed maps into RMarkdown documents and Shiny apps
+- display maps in non spherical mercator projections
+- easy rendering of spatial objects from the sp or sf packages, or data frames with latitude/longitude columns
+- can change features in maps using plugins from the leaflet plugins repository
+
+The leaflet graph below shows an interactive graph of U.S population density.
+
+![](/cloud/project/leafletgraph.png)
+
+
+## dygraphs
+
+dygraphs is an R package thats focuses on interactive time series visualization.
+
+#### Some features include:
+
+- automatic plotting of xts time-series objects or other time series objects that are convertible to xts (eXtensible Time Series)
+- range selector interface for interactive interactive panning and zooming,
+- interactive series/point highlighting with different visual options,
+- highly configurable axis and series display 
+- graph overlays including shaded regions, event lines, and annotations
+- make graphs in the R console
+- embed graphs into RMarkdown documents and R Shiny apps
+
+The dygraph below shows an interactive time-series graph showing the Discharge of River Danube.
+
 ![](/cloud/project/dygraphsimage.png)
 
-
-# Examples of Usage 
 
 
 
