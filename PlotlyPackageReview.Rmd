@@ -292,7 +292,7 @@ Plotly seems to be a comprehensive package for graphic data visualization. Graph
 #### Suggestions
 
 - more documentation for some of the specific and more complex graph types (like choropleths, 3D charts)
-
+- maybe including a basic overview of the specific graph types and the input parameters needed
 
 
 
