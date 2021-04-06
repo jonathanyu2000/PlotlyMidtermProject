@@ -41,29 +41,29 @@ Current Version: 4.9.3 (last updated 1/10/2021)
 R (≥ 3.2.0), ggplot2 (≥ 3.0.0)
 
 # Usage
-plotly offers a wide variety of interactive options allowed on a web-based application which include: 
+Plotly offers a wide variety of interactive options allowed on a web-based application which include: 
 
 
 ## Examples of Usage
 plotly converts plots to an interactive, web-based version.  It allows for zooming in or out of a graph, selection of data points 
 
-  - zooming in or out of a graph
-  - selection of data points upon mouse hover
-  - panning through a graph 
-  - downloading a graph as a PNG
-  - box selecting or lasso selecting data points
-  - option to compare nearby data points upon hover 
+  - Zooming in or out of a graph
+  - Selection of data points upon mouse hover
+  - Panning through a graph 
+  - Downloading a graph as a PNG
+  - Box selecting or lasso selecting data points
+  - Option to compare nearby data points upon hover 
 
-visual formats supported by plotly include: 
+Visual formats supported by plotly include: 
 
-  - basic charts (scatter and line plots, bar charts, pie charts, bubble charts, and more)
-  - statistical charts (2D Histograms, box plots, histograms, error bars, violin plots, and more)
-  - scientific charts (log plots, contour plots, heatmaps, network graph, ternary contour plots, and more)
-  - financial charts (time series, candlestick charts, OHLC charts, waterfall charts, funnel charts, and more)
-  - maps (chloropleth maps, scatter plots on maps, mapbox density, lines on maps, mapbox layers, and more)
+  - Basic charts (scatter and line plots, bar charts, pie charts, bubble charts, and more)
+  - Statistical charts (2D Histograms, box plots, histograms, error bars, violin plots, and more)
+  - Scientific charts (log plots, contour plots, heatmaps, network graph, ternary contour plots, and more)
+  - Financial charts (time series, candlestick charts, OHLC charts, waterfall charts, funnel charts, and more)
+  - Faps (chloropleth maps, scatter plots on maps, mapbox density, lines on maps, mapbox layers, and more)
   - 3D Charts (3D scatter plots, 3d line plots, 3d surface plots, 3d mesh plots, 3d cone plots, and more)
-  - subplots (multiple axes, map subplots and small multiples, inset plots, subplots, 3d subplots, and more)
-  - animated plots
+  - Subplots (multiple axes, map subplots and small multiples, inset plots, subplots, 3d subplots, and more)
+  - Animated plots
 
 ## ggplot to plotly
 One of the neat things about the plotly package is that it can convert a ggplot2 graph into a plotly graph.  Here we have a basic graph made from ggplot2:
@@ -142,7 +142,7 @@ plot
 ## 3D Graphs 
 Plotly can also be used to create 3D versions of graphs, such as 3D scatterplots. In the following example from the Clustering Lab, a 3D plotly scatterplot is shown that graphs NBA players based on minutes played, field goals, and points. Hover over each point to see the player name and their salary.
 
-```{r, results=FALSE, warning = FALSE, message = FALSE}
+```{r, results=FALSE, warning = FALSE, message = FALSE, echo=FALSE}
 #importing dataset and viewing data
 nba = read_csv("/cloud/project/nba2020-21.csv")
 
@@ -159,7 +159,7 @@ mutate(Player = as.factor(Player)) %>%
 
 #calling the function
 nba_stats <- nba_pre_processing(nba)
-view(nba_stats)
+#view(nba_stats)
 
 #pre-processing for salary data
 salary = read_csv("/cloud/project/nba_salaries_21.csv") 
@@ -175,17 +175,19 @@ salary_pre_processing <- function(salary){
 
 #calling salary function
 salary_stats <- salary_pre_processing(salary) #processing salary data
-view(salary_stats)
+#view(salary_stats)
 
 ```
 
-```{r, results=FALSE}
+```{r, results=TRUE, echo=FALSE}
 #combining nba data with salary data into one chart
 nba_combined <- merge(nba_stats, salary_stats, by="Player", all=TRUE)  
 
 #fixing column names 
 colnames(nba_combined) <- c("Player", "Tm","Pos", "FG", "FT","PTS", "MP", "Salary")
 
+library(DT)
+datatable(nba_combined)
 ```
 
 ```{r,warning = FALSE, message = FALSE}
@@ -226,9 +228,9 @@ plot
 
 ## ggplot2
 
-ggplot2 is probably the most similar package to plotly. You can even convert from ggplot2 to plotly, and they share a lot of the same capabilities as far as creating graphics for data visualization. However, plotly has slightly more capabilaties as far as creating fully interactive graphs. Plotly is also available for Python, MATLAB, and React, whereas ggplot2 is made for R.
+The most similar package to plotly is probably ggplot2. You can even convert from ggplot2 to plotly, and they share a lot of the same capabilities as far as creating graphics for data visualization. However, plotly has slightly more capabilaties as far as creating fully interactive graphs. Plotly is also available for Python, MATLAB, and React, whereas ggplot2 is made for R.
 
-The ggplot2 graph below shows a simple graph created in ggplot2 that graphs GDP per capita vs. Life Expectancy.
+The ggplot2 image of a graph below shows a simple graph created in ggplot2 that graphs GDP per capita vs. Life Expectancy.
 
 ![](/cloud/project/ggplot2.png)
 
@@ -239,34 +241,34 @@ Leaflet is a very popular R package used to make interactive maps. It expands gr
 
 #### Some features include:
 
-- interactive panning and zooming
-- creating maps using combinations of map tiles, map markers, polygons, lines, popups, and more
-- create maps directly in RStudio
-- embed maps into RMarkdown documents and Shiny apps
-- display maps in non spherical mercator projections
-- easy rendering of spatial objects from the sp or sf packages, or data frames with latitude/longitude columns
-- can change features in maps using plugins from the leaflet plugins repository
+- Interactive panning and zooming
+- Creating maps using combinations of map tiles, map markers, polygons, lines, popups, and more
+- Create maps directly in RStudio
+- Embed maps into RMarkdown documents and Shiny apps
+- Display maps in non spherical mercator projections
+- Easy rendering of spatial objects from the sp or sf packages, or data frames with latitude/longitude columns
+- Can change features in maps using plugins from the leaflet plugins repository
 
-The leaflet graph below shows an interactive graph of U.S population density.
+The leaflet image of a graph below shows an interactive graph of U.S population density.
 
 ![](/cloud/project/leafletgraph.png)
 
 
 ## dygraphs
 
-dygraphs is an R package thats focuses on interactive time series visualization.
+The package dygraphs is an R package thats focuses on interactive time series visualization.
 
 #### Some features include:
 
-- automatic plotting of xts time-series objects or other time series objects that are convertible to xts (eXtensible Time Series)
-- range selector interface for interactive interactive panning and zooming,
-- interactive series/point highlighting with different visual options,
-- highly configurable axis and series display 
-- graph overlays including shaded regions, event lines, and annotations
-- make graphs in the R console
-- embed graphs into RMarkdown documents and R Shiny apps
+- Automatic plotting of xts time-series objects or other time series objects that are convertible to xts (eXtensible Time Series)
+- Range selector interface for interactive interactive panning and zooming,
+- Interactive series/point highlighting with different visual options,
+- Highly configurable axis and series display 
+- Graph overlays including shaded regions, event lines, and annotations
+- Make graphs in the R console
+- Embed graphs into RMarkdown documents and R Shiny apps
 
-The dygraph below shows an interactive time-series graph showing the Discharge of River Danube.
+The dygraph image below shows an interactive time-series graph showing the Discharge of River Danube.
 
 ![](/cloud/project/dygraphsimage.png)
 
@@ -279,22 +281,22 @@ Plotly seems to be a comprehensive package for graphic data visualization. Graph
 
 #### Pros
 
-- graphs are interactive
-- graphs are aesthetically pleasing
-- can be used in conjunction to ggplot
-- relatively simple to use for simple graphs 
-- many options for visualizations (graphs, maps, animations, subplots, 3D charts, financial charts, statistical charts )
-- graphs are highly customizable 
-- plotly is available in other programs
+- Graphs are interactive
+- Graphs are aesthetically pleasing
+- Can be used in conjunction to ggplot
+- Relatively simple to use for simple graphs 
+- Many options for visualizations (graphs, maps, animations, subplots, 3D charts, financial charts, statistical charts )
+- Graphs are highly customizable 
+- Plotly is available in other programs
 
 #### Cons
   - Documentation is limited on the specific parameters within plot_ly.  While the package documentation is helpful in outlining each function within plot_ly it does a fairly poor job of providing examples of what each parameter does within the plot_ly function. I think having extensive documentation on each parameter accompanied by a picture example of what it does would be tremendously helpful for people to get a better understanding of the plotly package. 
-  - for use in R, need to make sure that if you are looking for information online it is specific to R and not another program that uses plotly (like Python)
+  - For use in R, need to make sure that if you are looking for information online it is specific to R and not another program that uses plotly (like Python)
 
 #### Suggestions
 
-- more documentation for some of the specific and more complex graph types (like choropleths, 3D charts)
-- maybe including a basic overview of the specific graph types and the input parameters needed
+- More documentation for some of the specific and more complex graph types (like choropleths, 3D charts)
+- Maybe including a basic overview of the specific graph types and the input parameters needed
 
 
 
