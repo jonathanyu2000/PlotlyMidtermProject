@@ -226,7 +226,7 @@ plot
 
 ## ggplot2
 
-ggplot2 is probably the most similar package to leaflet. You can even convert from ggplot2 to plotly, and they share a lot of the same capabilities as far as creating graphics for data visualization. However, plotly has slightly more capabilaties as far as creating fully interactive graphs. Plotly is also available for Python, MATLAB, and React, whereas ggplot2 is made for R.
+ggplot2 is probably the most similar package to plotly. You can even convert from ggplot2 to plotly, and they share a lot of the same capabilities as far as creating graphics for data visualization. However, plotly has slightly more capabilaties as far as creating fully interactive graphs. Plotly is also available for Python, MATLAB, and React, whereas ggplot2 is made for R.
 
 The ggplot2 graph below shows a simple graph created in ggplot2 that graphs GDP per capita vs. Life Expectancy.
 
