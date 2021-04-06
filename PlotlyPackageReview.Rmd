@@ -10,6 +10,9 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library("prettydoc")
+library("plotly")
+install.packages("tidyverse")
+library("tidyverse")
 ```
 
 ![](/cloud/project/plotlylogo.png)
@@ -113,6 +116,23 @@ The dygraph below shows an interactive time-series graph showing the Discharge o
 ![](/cloud/project/dygraphsimage.png)
 
 
+## Bubble Chart
+One of the most basic charts that you are able to create in plotly is the bubble chart.  A bubble chart is a scatter plot whose markers have variable color and size.  In this example we will be making a bubble plot from scratch using plotly and the built in mtcars dataset in R.
+```{r}
+figure <- plot_ly(
+  data = mtcars, #specified dataset, in this case we are using mtcars
+  x = ~mpg, #variable that corresponds with x-axis 
+  y = ~hp, #variable that corresponds with y-axis
+  text = rownames(mtcars), #specifies text that shows up when you hover over a data point
+  type = 'scatter', #specified graph type, in this case we are using the scatter plot
+  mode = 'markers', 
+  marker = list(size = ~cyl, opacity = 0.5, color = 'green')) #marker parameter specifies the size, opacity, and color of each of our bubbles.  
+
+figure <- figure %>%
+  layout(title = 'Gas Efficiency and Speed of Cars in mtcars dataset')
+figure
+  
+```
 
 
 # Reflection
