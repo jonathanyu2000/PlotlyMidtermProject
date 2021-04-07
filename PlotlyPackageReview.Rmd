@@ -224,6 +224,8 @@ plot
 ```
 
 ## Animations
+
+Plotly is able to advance its prior work in interactive plot to move onto interactive motion plots.  With animations the developer is able to display their data in motion.  This would be helpful in displaying data that is relative to time or position, such as an MRI scan.  A great feature of these animation is that the developer can 'hide' data from the viewer until they are ready.
 ```{r, echo=FALSE}
 accumulate_by <- function(dat, var) {
   var <- lazyeval::f_eval(var, dat)
@@ -276,6 +278,8 @@ fig
 ```
 
 ## Button Interactions
+
+The main benefit of plotly is that the user is able to interact with the developer's plot and choose what data they are seeing.  Buttons allow the developer to give even more control to the user and allow the user to be able to dictact even more about the given plot.  Some button types include: restyling, animation, update, and relayout.
 ```{r, echo=FALSE}
 fig <- plot_ly(z = ~volcano, type = "heatmap", colorscale='Rainbow')
 
