@@ -223,6 +223,208 @@ plot <- plot %>% layout(
 plot
 ```
 
+## Animations
+```{r, echo=FALSE}
+accumulate_by <- function(dat, var) {
+  var <- lazyeval::f_eval(var, dat)
+  lvls <- plotly:::getLevels(var)
+  dats <- lapply(seq_along(lvls), function(x) {
+    cbind(dat[var %in% lvls[seq(1, x)], ], frame = lvls[[x]])
+  })
+  dplyr::bind_rows(dats)
+}
+
+df <- txhousing 
+fig <- df %>%
+  filter(year > 2005, city %in% c("Abilene", "Bay Area"))
+fig <- fig %>% accumulate_by(~date)
+
+
+fig <- fig %>%
+  plot_ly(
+    x = ~date, 
+    y = ~median,
+    split = ~city,
+    frame = ~frame, 
+    type = 'scatter',
+    mode = 'lines', 
+    line = list(simplyfy = F)
+  )
+fig <- fig %>% layout(
+  xaxis = list(
+    title = "Date",
+    zeroline = F
+  ),
+  yaxis = list(
+    title = "Median",
+    zeroline = F
+  )
+) 
+fig <- fig %>% animation_opts(
+  frame = 100, 
+  transition = 0, 
+  redraw = FALSE
+)
+fig <- fig %>% animation_slider(
+)
+fig <- fig %>% animation_button(
+  x = 1, xanchor = "right", y = 0, yanchor = "bottom"
+)
+
+
+fig
+```
+
+## Button Interactions
+```{r, echo=FALSE}
+fig <- plot_ly(z = ~volcano, type = "heatmap", colorscale='Rainbow')
+
+# chart option buttons
+chart_types <- list(
+  type = "buttons",
+  direction = "right",
+  xanchor = 'center',
+  yanchor = "top",
+  pad = list('r'= 0, 't'= 10, 'b' = 10),
+  x = 0.5,
+  y = 1.27,
+  buttons = list(
+
+    list(method = "restyle",
+         args = list("type", "heatmap"),
+         label = "Heatmap"),
+
+    list(method = "restyle",
+         args = list("type", "contour"),
+         label = "Contour"),
+
+    list(method = "restyle",
+         args = list("type", "surface"),
+         label = "Surface")
+  ))
+
+# color option buttons  
+color_types <- list(
+  type = "buttons",
+  direction = "right",
+  xanchor = 'center',
+  yanchor = "top",
+  pad = list('r'= 0, 't'= 10, 'b' = 10),
+  x = 0.5,
+  y = 1.17,
+  buttons = list(
+
+    list(method = "restyle",
+         args = list("colorscale", "Rainbow"),
+         label = "Rainbow"),
+
+    list(method = "restyle",
+         args = list("colorscale", "Jet"),
+         label = "Jet"),
+
+    list(method = "restyle",
+         args = list("colorscale", "Earth"),
+         label = "Earth"),
+
+    list(method = "restyle",
+         args = list("colorscale", "Electric"),
+         label = "Electric")
+  ))
+
+annot <- list(list(text = "Chart<br>Type", x=0.2, y=1.25, xref='paper', yref='paper', showarrow=FALSE),
+              list(text = "Color<br>Type", x=0.2, y=1.15, xref='paper', yref='paper', showarrow=FALSE))
+
+# plot
+fig <- fig %>% layout(
+  xaxis = list(domain = c(0.1, 1)),
+  yaxis = list(title = "y"),
+  updatemenus = list(chart_types,color_types),
+  annotations = annot)
+
+fig
+```
+```{r, echo=FALSE}
+x0 <- rnorm(400, mean=2, sd=0.4)
+y0 <- rnorm(400, mean=2, sd=0.4)
+x1 <- rnorm(400, mean=3, sd=0.6)
+y1 <- rnorm(400, mean=6, sd=0.4)
+x2 <- rnorm(400, mean=4, sd=0.2)
+y2 <- rnorm(400, mean=4, sd=0.4)
+
+# shapes components
+cluster0 = list(
+  type = 'circle',
+  xref ='x', yref='y',
+  x0=min(x0), y0=min(y0),
+  x1=max(x0), y1=max(y0),
+  opacity=0.25,
+  line = list(color="#835AF1"),
+  fillcolor="#835AF1")
+
+cluster1 = list(
+  type = 'circle',
+  xref ='x', yref='y',
+  x0=min(x1), y0=min(y1),
+  x1=max(x1), y1=max(y1),
+  opacity=0.25,
+  line = list(color="#7FA6EE"),
+  fillcolor="#7FA6EE")
+
+cluster2 = list(
+  type = 'circle',
+  xref ='x', yref='y',
+  x0=min(x2), y0=min(y2),
+  x1=max(x2), y1=max(y2),
+  opacity=0.25,
+  line = list(color="#B8F7D4"),
+  fillcolor="#B8F7D4")
+
+# updatemenus component
+updatemenus <- list(
+  list(
+    active = -1,
+    type = 'buttons',
+    buttons = list(
+
+      list(
+        label = "None",
+        method = "relayout",
+        args = list(list(shapes = c()))),
+
+      list(
+        label = "Cluster 0",
+        method = "relayout",
+        args = list(list(shapes = list(cluster0, c(), c())))),
+
+      list(
+        label = "Cluster 1",
+        method = "relayout",
+        args = list(list(shapes = list(c(), cluster1, c())))),
+
+      list(
+        label = "Cluster 2",
+        method = "relayout",
+        args = list(list(shapes = list(c(), c(), cluster2)))),
+
+      list(
+        label = "All",
+        method = "relayout",
+        args = list(list(shapes = list(cluster0,cluster1,cluster2))))
+    )
+  )
+)
+
+fig <- plot_ly(type = 'scatter', mode='markers') 
+fig <- fig %>% add_trace(x=x0, y=y0, mode='markers', marker=list(color='#835AF1')) 
+fig <- fig %>% add_trace(x=x1, y=y1, mode='markers', marker=list(color='#7FA6EE')) 
+fig <- fig %>% add_trace(x=x2, y=y2, mode='markers', marker=list(color='#B8F7D4')) 
+fig <- fig %>% layout(title = "Highlight Clusters", showlegend = FALSE,
+         updatemenus = updatemenus)
+
+fig
+```
+
+
 # Similar Packages
 
 
